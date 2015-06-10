@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Factorio Calculator</title>
+  <title>Factorio Diagram</title>
   <link rel="stylesheet" href="http://cdn.webix.com/edge/webix.css" type="text/css"> 
   <script src="http://cdn.webix.com/edge/webix.js" type="text/javascript"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
@@ -10,9 +10,9 @@
   <script src="external/queue.js" type="text/javascript"></script>
   <script src="utils.coffee" type="text/coffeescript"></script>
   <script src="modloader.coffee" type="text/coffeescript"></script>
-  <script src="base.coffee" type="text/coffeescript"></script>
+  <script src="mods/base.coffee" type="text/coffeescript"></script>
   <script src="calculation.coffee" type="text/coffeescript"></script>
-  
+  <script src="ui.coffee" type="text/coffeescript"></script>
 </head>
 <body>
 
@@ -20,7 +20,10 @@
     console.log 'Hello'
     console.log window.mods
     mod_loader.reload()
-    console.log calculation.solve_order { 'advanced_circuit': 1, 'plastic_bar': 1 }
+    [recipe_count, raw_count, product_count] = calculation.solve_order { 'advanced_circuit': 1, 'plastic_bar': 1 }
+    webix.ready ->
+      webix.ui table_ui
+      $$('recipe_tree').parse calculation.build_recipe_data recipe_count
   </script>
 
   <script src="http://coffeescript.org/extras/coffee-script.js" type="text/javascript"></script>
