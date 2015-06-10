@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Factorio Calculator</title>
+  <link rel="stylesheet" href="http://cdn.webix.com/edge/webix.css" type="text/css"> 
+  <script src="http://cdn.webix.com/edge/webix.js" type="text/javascript"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js" type="text/javascript"></script>
+  <script src="external/queue.js" type="text/javascript"></script>
+  <script src="utils.coffee" type="text/coffeescript"></script>
+  <script src="modloader.coffee" type="text/coffeescript"></script>
+  <script src="base.coffee" type="text/coffeescript"></script>
+  <script src="calculation.coffee" type="text/coffeescript"></script>
+  
+</head>
+<body>
+
+  <script type="text/coffeescript">
+    console.log 'Hello'
+    console.log window.mods
+    mod_loader.reload()
+    console.log calculation.solve_order { 'advanced_circuit': 1, 'plastic_bar': 1 }
+  </script>
+
+  <script src="http://coffeescript.org/extras/coffee-script.js" type="text/javascript"></script>
+</body>
+</html>
