@@ -640,12 +640,23 @@ mod =
       time: 0.5
     'basic_oil_processing':
       crafting_station: 'oil_refinery'
+      default_enabled: false
       input:
         'crude_oil': 10
       output:
         'heavy_oil': 3
         'light_oil': 3
         'petroleum_gas': 4
+      time: 5
+    'advanced_oil_procesing':
+      crafting_station: 'oil_refinery'
+      input:
+        'water': 5
+        'crude_oil': 10
+      output:
+        'heavy_oil': 1
+        'light_oil': 4.5
+        'petroleum_gas': 5.5
       time: 5
     'heavy_oil_cracking_to_light_oil':
       crafting_station: 'chemical_plant'

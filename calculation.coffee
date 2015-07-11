@@ -7,6 +7,7 @@ filter_recipes_with_certain_input = (recipes, input_id) ->
 
 @calculation =
   related_recipes_and_items: (order) ->
+    enabled_recipes = utils.filter recipes, (recipe_id, recipe) -> recipe.enabled
     related_recipes = {}
     related_items = {}
     items_queued = {}
@@ -16,7 +17,7 @@ filter_recipes_with_certain_input = (recipes, input_id) ->
       output = q.dequeue()
       related_items[output] = items[output]
       items_queued[output] = items[output]
-      recipes_with_output = filter_recipes_with_certain_output recipes, output
+      recipes_with_output = filter_recipes_with_certain_output enabled_recipes, output
       $.each recipes_with_output, (recipe_id, recipe) ->
         related_recipes[recipe_id] = recipe
         $.each recipe.input, (input, count) ->
@@ -49,6 +50,7 @@ filter_recipes_with_certain_input = (recipes, input_id) ->
     calculation_item_array = utils.join_array intermediate_array, order_product_array
 
     console.log [related_recipes_array.length, calculation_item_array.length]
+    return [{}, {}, {}] if related_recipes_array.length != calculation_item_array.length
     index_of_recipe = {}
     $.each related_recipes_array, (index, recipe_id) -> index_of_recipe[recipe_id] = index
     index_of_item = {}

@@ -29,6 +29,9 @@ reload_recipes = ->
       if !recipe.output?
         recipe.output = {}
         recipe.output[recipe_id] = 1
+      if !recipe.default_enabled?
+        recipe.default_enabled = true
+      recipe.enabled = recipe.default_enabled
       recipes[recipe_id] = recipe
 
 @mod_loader =
