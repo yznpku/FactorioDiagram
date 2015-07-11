@@ -15,3 +15,11 @@ translation =
     'heavy_oil': 'Heavy oil'
     'light_oil': 'Light oil'
     'petroleum_gas': 'Petroleum gas'
+    'assembling_machine': 'Assembling machine'
+    'furnace': 'Furnace'
+    'oil_refinery': 'Oil refinery'
+    'chemical_plant': 'Chemical plant'
+    'basic_oil_processing': 'Basic oil processing'
+    'heavy_oil_cracking_to_light_oil': 'Heavy oil cracking to light oil'
+    'light_oil_cracking_to_petroleum_gas': 'Light oil cracking to petroleum gas'
+    
