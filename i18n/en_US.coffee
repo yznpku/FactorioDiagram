@@ -22,4 +22,5 @@ translation =
     'basic_oil_processing': 'Basic oil processing'
     'heavy_oil_cracking_to_light_oil': 'Heavy oil cracking to light oil'
     'light_oil_cracking_to_petroleum_gas': 'Light oil cracking to petroleum gas'
-    
+
+translations[translation.code] = translation
