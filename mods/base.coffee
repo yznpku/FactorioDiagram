@@ -123,7 +123,7 @@ mod =
       'heavy_oil': {}
       'light_oil': {}
       'petroleum_gas': {}
-      'sulrelated_recipes_array.length, calculation_item_array.lengthfuric_acid': {}
+      'sulfuric_acid': {}
       'lubricant': {}
 
     'combat':
