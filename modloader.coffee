@@ -24,6 +24,11 @@ reload_recipes = ->
   @recipes = {}
   $.each mods, (index, mod) ->
     $.each mod.recipes, (recipe_id, recipe) ->
+      if !recipe.crafting_station?
+        recipe.crafting_station = 'assembling_machine'
+      if !recipe.output?
+        recipe.output = {}
+        recipe.output[recipe_id] = 1
       recipes[recipe_id] = recipe
 
 @mod_loader =
