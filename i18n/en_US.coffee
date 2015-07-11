@@ -1,0 +1,17 @@
+translation =
+  name: 'English'
+  code: 'en_US'
+  data:
+    'fuel': 'Fuel'
+    'copper_ore': 'Copper ore'
+    'coal': 'Coal'
+    'water': 'Water'
+    'copper_plate': 'Copper plate'
+    'copper_cable': 'Copper cable'
+    'iron_plate': 'Iron plate'
+    'electronic_circuit': 'Electronic circuit'
+    'advanced_circuit': 'Advanced circuit'
+    'plastic_bar': 'Plastic bar'
+    'heavy_oil': 'Heavy oil'
+    'light_oil': 'Light oil'
+    'petroleum_gas': 'Petroleum gas'
