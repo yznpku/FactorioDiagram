@@ -34,8 +34,20 @@ reload_recipes = ->
       recipe.enabled = recipe.default_enabled
       recipes[recipe_id] = recipe
 
+check_integrity_of_recipes = ->
+  $.each recipes, (recipe_id, recipe) ->
+    $.each recipe.input, (input_id, count) ->
+      if !items[input_id]?
+        console.log recipe_id + ' has unknown input ' + input_id
+    $.each recipe.output, (output_id, count) ->
+      if !items[output_id]?
+        console.log recipe_id + ' has unknown output ' + output_id
+    if !recipe.time?
+      console.log recipe_id + ' has unknown time'
+
 @mod_loader =
   reload: ->
     reload_items()
     reload_crafting_stations()
     reload_recipes()
+    check_integrity_of_recipes()

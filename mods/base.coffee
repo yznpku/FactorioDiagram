@@ -163,7 +163,7 @@ mod =
       'battery_mk1': {}
       'battery_mk2': {}
       'personal_laser_defense': {}
-      'electric_discharge_defense': {}
+      'discharge_defense': {}
       'basic_exoskeleton_equipment': {}
       'night_vision': {}
       'stone_wall': {}
@@ -618,26 +618,15 @@ mod =
         'processing_unit': 5
         'alien_artifact': 1
       time: 60
-    
-
-    
-
-    'copper_plate':
-      crafting_station: 'furnace'
+    'sulfuric_acid':
+      crafting_station: 'chemical_plant'
       input:
-        'copper_ore': 1
-      time: 3.5
-    'copper_cable':
-      input:
-        'copper_plate': 1
-      output:
-        'copper_cable': 2
-      time: 0.5
-    'electronic_circuit':
-      input: 
+        'sulfur': 5
         'iron_plate': 1
-        'copper_cable': 3
-      time: 0.5
+        'water': 10
+      output:
+        'sulfuric_acid': 5
+      time: 1
     'basic_oil_processing':
       crafting_station: 'oil_refinery'
       default_enabled: false
@@ -674,6 +663,68 @@ mod =
       output:
         'petroleum_gas': 2
       time: 5
+    'solid_fuel_from_light_oil':
+      crafting_station: 'chemical_plant'
+      input:
+        'light_oil': 1
+      output:
+        'solid_fuel': 1
+      time: 3
+    'solid_fuel_from_petroleum_gas':
+      crafting_station: 'chemical_plant'
+      default_enabled: false
+      input:
+        'petroleum_gas': 2
+      output:
+        'solid_fuel': 1
+      time: 3
+    'solid_fuel_from_heavy_oil':
+      crafting_station: 'chemical_plant'
+      default_enabled: false
+      input:
+        'heavy_oil': 2
+      output:
+        'solid_fuel': 1
+      time: 3
+    'lubricant':
+      crafting_station: 'chemical_plant'
+      input:
+        'heavy_oil': 1
+      time: 1
+    'wood':
+      input:
+        'raw_wood': 1
+      output:
+        'wood': 2
+      time: 0.5
+    'iron_plate':
+      crafting_station: 'furnace'
+      input:
+        'iron_ore': 1
+      time: 3.5
+    'copper_plate':
+      crafting_station: 'furnace'
+      input:
+        'copper_ore': 1
+      time: 3.5
+    'steel_plate':
+      crafting_station: 'furnace'
+      input:
+        'iron_plate': 5
+      time: 17.5
+    'stone_brick':
+      crafting_station: 'furnace'
+      input:
+        'stone': 2
+      time: 3.5
+    'sulfur':
+      crafting_station: 'chemical_plant'
+      input:
+        'water': 3
+        'petroleum_gas': 3
+      output:
+        'sulfur': 2
+      time: 1
     'plastic_bar':
       crafting_station: 'chemical_plant'
       input:
@@ -682,12 +733,367 @@ mod =
       output:
         'plastic_bar': 2
       time: 1
+    'empty_barrel':
+      input:
+        'steel_plate': 1
+      time: 1
+    'fill_crude_oil_barrel':
+      default_enabled: false
+      input:
+        'empty_barrel': 1
+        'crude_oil': 25
+      output:
+        'crude_oil_barrel': 1
+      time: 1
+    'empty_crude_oil_barrel':
+      default_enabled: false
+      input:
+        'crude_oil_barrel': 1
+      output:
+        'empty_barrel': 1
+        'crude_oil': 25
+      time: 1
+    'iron_stick':
+      input:
+        'iron_plate': 1
+      output:
+        'iron_stick': 2
+      time: 0.5
+    'iron_gear_wheel':
+      input:
+        'iron_plate': 2
+      time: 0.5
+    'electronic_circuit':
+      input: 
+        'iron_plate': 1
+        'copper_cable': 3
+      time: 0.5
     'advanced_circuit':
       input:
         'plastic_bar': 2
         'electronic_circuit': 2
         'copper_cable': 4
       time: 8
-
+    'processing_unit':
+      input:
+        'electronic_circuit': 20
+        'advanced_circuit': 2
+        'sulfuric_acid': 0.5
+      time: 15
+    'engine_unit':
+      input:
+        'steel_plate': 1
+        'iron_gear_wheel': 1
+        'pipe': 2
+      time: 20
+    'electric_engine_unit':
+      input:
+        'engine_unit': 1
+        'electronic_circuit': 2
+        'lubricant': 2
+      time: 20
+    'explosives':
+      crafting_station: 'chemical_plant'
+      input:
+        'sulfur': 1
+        'coal': 1
+        'water': 1
+      time: 5
+    'battery':
+      crafting_station: 'chemical_plant'
+      input:
+        'iron_plate': 1
+        'copper_plate': 1
+        'sulfuric_acid': 2
+      time: 5
+    'flying_robot_frame':
+      input:
+        'electric_engine_unit': 1
+        'battery': 2
+        'steel_plate': 1
+        'electronic_circuit': 3
+      time: 20
+    'copper_cable':
+      input:
+        'copper_plate': 1
+      output:
+        'copper_cable': 2
+      time: 0.5
+    'red_wire':
+      input:
+        'electronic_circuit': 1
+        'copper_cable': 1
+      time: 0.5
+    'green_wire':
+      input:
+        'electronic_circuit': 1
+        'copper_cable': 1
+      time: 0.5
+    'science_pack_1':
+      input:
+        'copper_plate': 1
+        'iron_gear_wheel': 1
+      time: 5
+    'science_pack_2':
+      input:
+        'inserter': 1
+        'transport_belt': 1
+      time: 6
+    'science_pack_3':
+      input:
+        'battery': 1
+        'advanced_circuit': 1
+        'smart_inserter': 1
+        'steel_plate': 1
+      time: 12
+    'alien_science_pack':
+      input:
+        'alien_artifact': 1
+      output:
+        'alien_science_pack': 10
+      time: 12
+    'pistol':
+      input:
+        'copper_plate': 5
+        'iron_plate': 5
+      time: 1
+    'submachine_gun':
+      input:
+        'iron_gear_wheel': 10
+        'copper_plate': 5
+        'iron_plate': 10
+      time: 3
+    'shotgun':
+      input:
+        'iron_plate': 15
+        'iron_gear_wheel': 5
+        'copper_plate': 10
+        'wood': 5
+      time: 4
+    'combat_shotgun':
+      input:
+        'steel_plate': 15
+        'iron_gear_wheel': 5
+        'copper_plate': 10
+        'wood': 10
+      time: 8
+    'rocket_launcher':
+      input:
+        'iron_plate': 5
+        'iron_gear_wheel': 5
+        'electronic_circuit': 5
+      time: 5
+    'flamethrower':
+      input:
+        'steel_plate': 5
+        'iron_gear_wheel': 10
+      time: 10
+    'land_mine':
+      input:
+        'steel_plate': 1
+        'explosives': 2
+      output:
+        'land_mine': 4
+      time: 5
+    'regular_magazine':
+      input:
+        'iron_plate': 2
+      time: 2
+    'piercing_rounds_magazine':
+      input:
+        'copper_plate': 5
+        'steel_plate': 1
+      time: 3
+    'shotgun_shells':
+      input:
+        'copper_plate': 2
+        'iron_plate': 2
+      time: 3
+    'piercing_shotgun_shells':
+      input:
+        'copper_plate': 2
+        'steel_plate': 2
+      time: 8
+    'cannon_shells':
+      input:
+        'steel_plate': 4
+        'plastic_bar': 2
+        'explosives': 1
+      time: 8
+    'rocket':
+      input:
+        'electronic_circuit': 1
+        'explosives': 2
+        'iron_plate': 2
+      time: 8
+    'explosive_rocket':
+      input:
+        'rocket': 1
+        'explosives': 5
+      time: 8
+    'flamethrower_ammo':
+      crafting_station: 'chemical_plant'
+      input:
+        'iron_plate': 5
+        'light_oil': 2.5
+        'heavy_oil': 2.5
+      time: 3
+    'basic_grenade':
+      input:
+        'iron_plate': 5
+        'coal': 10
+      time: 8
+    'poison_capsule':
+      input:
+        'steel_plate': 3
+        'electronic_circuit': 3
+        'coal': 10
+      time: 8
+    'slowdown_capsule':
+      input:
+        'steel_plate': 2
+        'electronic_circuit': 2
+        'coal': 5
+      time: 8
+    'defender_capsule':
+      input:
+        'piercing_rounds_magazine': 1
+        'electronic_circuit': 2
+        'iron_gear_wheel': 3
+      time: 8
+    'distractor_capsule':
+      input:
+        'defender_capsule': 4
+        'advanced_circuit': 3
+      time: 15
+    'destroyer_capsule':
+      input:
+        'distractor_capsule': 4
+        'speed_module': 1
+      time: 15
+    'basic_electric_discharge_defense_remote':
+      input:
+        'electronic_circuit': 1
+      time: 0.5
+    'iron_armor':
+      input:
+        'iron_plate': 40
+      time: 3
+    'heavy_armor':
+      input:
+        'copper_plate': 100
+        'steel_plate': 50
+      time: 8
+    'basic_modular_armor':
+      input:
+        'advanced_circuit': 30
+        'processing_unit': 5
+        'steel_plate': 50
+      time: 15
+    'power_armor':
+      input:
+        'processing_unit': 40
+        'electric_engine_unit': 20
+        'steel_plate': 40
+        'alien_artifact': 10
+      time: 20
+    'power_armor_mk2':
+      input:
+        'efficiency_module_3': 5
+        'speed_module_3': 5
+        'processing_unit': 40
+        'steel_plate': 40
+        'alien_artifact': 50
+      time: 25
+    'portable_solar_panel':
+      input:
+        'solar_panel': 5
+        'processing_unit': 1
+        'steel_plate': 5
+      time: 10
+    'portable_fusion_reactor':
+      input:
+        'processing_unit': 100
+        'alien_artifact': 30
+      time: 10
+    'energy_shield':
+      input:
+        'advanced_circuit': 5
+        'steel_plate': 10
+      time: 10
+    'energy_shield_mk2':
+      input:
+        'energy_shield': 10
+        'processing_unit': 10
+      time: 10
+    'battery_mk1':
+      input:
+        'battery': 5
+        'steel_plate': 10
+      time: 10
+    'battery_mk2':
+      input:
+        'battery_mk1': 10
+        'processing_unit': 20
+      time: 10
+    'personal_laser_defense':
+      input:
+        'processing_unit': 1
+        'steel_plate': 5
+        'laser_turret': 5
+      time: 10
+    'discharge_defense':
+      input:
+        'processing_unit': 5
+        'steel_plate': 20
+        'laser_turret': 10
+      time: 10
+    'basic_exoskeleton_equipment':
+      input:
+        'processing_unit': 10
+        'electric_engine_unit': 30
+        'steel_plate': 20
+      time: 10
+    'night_vision':
+      input:
+        'advanced_circuit': 5
+        'steel_plate': 10
+      time: 10
+    'stone_wall':
+      input:
+        'stone_brick': 5
+      time: 0.5
+    'gate':
+      input:
+        'stone_wall': 1
+        'steel_plate': 2
+        'electronic_circuit': 2
+      time: 0.5
+    'gun_turret':
+      input:
+        'iron_gear_wheel': 5
+        'copper_plate': 5
+        'iron_plate': 10
+      time: 5
+    'laser_turret':
+      input:
+        'steel_plate': 5
+        'electronic_circuit': 5
+        'battery': 3
+      time: 5
+    'radar':
+      input:
+        'electronic_circuit': 5
+        'iron_gear_wheel': 5
+        'iron_plate': 10
+      time: 0.5
+    'rocket_defense':
+      input:
+        'rocket': 100
+        'advanced_circuit': 150
+        'processing_unit': 100
+        'speed_module_3': 50
+        'productivity_module_3': 50
+      time: 0.5
 
 mods.push mod
