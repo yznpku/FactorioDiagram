@@ -27,3 +27,17 @@
         a.push utils.make_zero_array clone
         dimension--
       a
+
+  output_default_translation: ->
+    ids = {}
+    $.each items, (item_id, item) -> ids[item_id] = item_id
+    $.each recipes, (recipe_id, recipe) -> ids[recipe_id] = recipe_id
+    $.each ids, (index, id) ->
+      words = id.split '_'
+      words[0] = String.fromCharCode(words[0].charCodeAt(0)-32) + words[0].substr(1)
+      str = ''
+      $.each words, (index, word) ->
+        if index > 0
+          str += ' '
+        str += word
+      console.log '\'' + id + '\': \'' + str + '\''
