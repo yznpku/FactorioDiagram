@@ -13,23 +13,3 @@
       ]
     }
   ]
-
-@data = [
-    {
-      name: 'Recipe 1'
-      count: 3
-      speed: 1.5
-      data: [
-        {
-          name: 'Input 1'
-          count: 1
-          speed: 1.5
-        },
-        {
-          name: 'Output 1'
-          count: 2
-          speed: 3
-        }
-      ]
-    }
-  ]
