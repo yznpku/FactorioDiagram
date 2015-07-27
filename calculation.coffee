@@ -92,23 +92,3 @@ filter_recipes_with_certain_input = (recipes, input_id) ->
         product_count[item_id] -= recipe_count[recipe_id] * recipe.input[item_id] / recipe.time
 
     [recipe_count, raw_count, product_count]
-
-  build_recipe_data: (recipe_count) ->
-    data = []
-    $.each recipe_count, (recipe_id, absolute_recipe_count) ->
-      recipe = recipes[recipe_id]
-      recipe_data =
-        name: tr(recipe.crafting_station) + ': ' + tr(recipe_id)
-        count: +absolute_recipe_count.toFixed 3
-        open: true
-        data: []
-      $.each recipe.input, (input_id, input_count) ->
-        recipe_data.data.push
-          name: 'Input: ' + tr(input_id) + ' * ' + input_count
-          speed: +(input_count * absolute_recipe_count / recipe.time).toFixed 3
-      $.each recipe.output, (output_id, output_count) ->
-        recipe_data.data.push
-          name: 'Output: ' + tr(output_id) + ' * ' + output_count
-          speed: +(output_count * absolute_recipe_count / recipe.time).toFixed 3
-      data.push recipe_data
-    data
