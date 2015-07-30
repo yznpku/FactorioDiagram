@@ -28,11 +28,11 @@
 
 
 result_treetable =
-  id: 'recipe_tree'
+  id: 'result_tree'
   view: 'treetable'
   columns: [
-    { id: 'name',  header: 'Name',  width: 500, template: '{common.treetable()} #name#' }
-    { id: 'count', header: 'Count',  width: 200 }
+    { id: 'name', header: 'Name', width: 500, template: '{common.treetable()} #name#', fillspace: true }
+    { id: 'count', header: 'Count', width: 200 }
     { id: 'speed', header: 'Speed', width: 200 }
   ]
 
@@ -46,7 +46,7 @@ config_area =
         {
           id: 'recipe_config'
           view: 'treetable'
-          columns: [ { id: 'name', header: 'Name', template: '{common.treetable()} #name#', fillspace: true } ]
+          columns: [ { id: 'name', header: 'Name', template: '{common.treecheckbox()}{common.treetable()} #name#', fillspace: true } ]
 
         }
       ]
