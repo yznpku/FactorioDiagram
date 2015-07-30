@@ -17,19 +17,7 @@
   <script src="ui.coffee" type="text/coffeescript"></script>
 </head>
 <body>
-
-  <script type="text/coffeescript">
-    console.log 'Hello'
-    console.log window.mods
-    mod_loader.reload()
-    [recipe_count, raw_count, product_count] = calculation.solve_order { 'science_pack_3': 1 }
-    webix.ready ->
-      webix.protoUI { name: "activeList" }, webix.ui.list, webix.ActiveContent
-      webix.ui main_ui
-      $$('recipe_config').parse ui.build_recipe_data recipes
-      $$('result_tree').parse ui.build_result_data recipe_count
-  </script>
-
+  <script src="main.coffee" type="text/coffeescript"></script>
   <script src="http://coffeescript.org/extras/coffee-script.js" type="text/javascript"></script>
 </body>
 </html>
