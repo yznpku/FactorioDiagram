@@ -22,6 +22,7 @@
     data = []
     $.each recipes, (recipe_id, recipe) ->
       recipe_data = 
+        id: recipe_id
         name: tr(recipe_id)
       data.push recipe_data
     data
@@ -46,8 +47,13 @@ config_area =
         {
           id: 'recipe_config'
           view: 'treetable'
-          columns: [ { id: 'name', header: 'Name', template: '{common.treecheckbox()}{common.treetable()} #name#', fillspace: true } ]
-
+          columns: [
+            { id: 'enabled', header: '', template: '{common.checkbox()}', width: 40 }
+            { id: 'name', header: 'Name', template: '#name#', fillspace: true }
+          ]
+          on:
+            onCheck: (row, column, state) ->
+              console.log row + ', ' + column + ', ' + state
         }
       ]
     }
