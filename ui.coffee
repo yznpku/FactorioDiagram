@@ -47,13 +47,15 @@ config_area =
         {
           id: 'recipe_config'
           view: 'treetable'
-          columns: [
-            { id: 'enabled', header: '', template: '{common.checkbox()}', width: 40 }
-            { id: 'name', header: 'Name', template: '#name#', fillspace: true }
-          ]
+          css: 'config'
+          columns: [ { id: 'name', header: 'Name', template: '{common.treecheckbox()} #name#', fillspace: true } ]
           on:
-            onCheck: (row, column, state) ->
-              console.log row + ', ' + column + ', ' + state
+            onItemCheck: (id, state) ->
+              console.log id + ', ' + state
+          ready: ->
+            tree = @
+            $.each recipes, (recipe_id, recipe) ->
+              tree.checkItem recipe_id if recipe.enabled
         }
       ]
     }
@@ -77,7 +79,7 @@ config_area =
       cols: [
         {
           header: 'Configuration'
-          gravity: 0.2
+          gravity: 0.3
           body: config_area
         }
         # { view: 'resizer' }
