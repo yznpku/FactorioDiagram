@@ -40,12 +40,9 @@ result_treetable =
 
 config_area =
   rows: [
-    {
       cells: [
-        {
           id: 'mod_config'
-        }
-        {
+        ,
           id: 'recipe_config'
           view: 'treetable'
           css: 'config'
@@ -59,10 +56,8 @@ config_area =
           #   tree = @
           #   $.each recipes, (recipe_id, recipe) ->
           #     tree.checkItem recipe_id if recipe.enabled
-        }
       ]
-    }
-    {
+    ,
       view: 'tabbar'
       type: 'bottom'
       multiview: true
@@ -70,26 +65,27 @@ config_area =
         { value: 'Mods', id: 'mod_config' }
         { value: 'Recipes', id: 'recipe_config' }
       ]
-    }
   ]
 
 @main_ui =
   rows: [
-    { type: 'header', template: 'Factorio Diagram' }
-
-    {
+      type: 'header'
+      template: 'Factorio Diagram'
+    ,
       margin: 0
       cols: [
-        {
           header: 'Configuration'
           gravity: 0.3
           body: config_area
-        }
-        # { view: 'resizer' }
-        {
-          header: 'Result'
-          body: result_treetable
-        }
+        ,
+          view: 'resizer'
+        ,
+          margin: 0
+          rows: [
+              type: 'header'
+              template: 'Factorio Diagram'
+            ,
+              result_treetable
+          ]
       ]
-    }
   ]
