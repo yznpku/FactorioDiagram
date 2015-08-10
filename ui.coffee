@@ -24,6 +24,7 @@
       recipe_data = 
         id: recipe_id
         name: tr(recipe_id)
+        checked: recipe.enabled
       data.push recipe_data
     data
 
@@ -52,10 +53,12 @@ config_area =
           on:
             onItemCheck: (id, state) ->
               console.log id + ', ' + state
-          ready: ->
-            tree = @
-            $.each recipes, (recipe_id, recipe) ->
-              tree.checkItem recipe_id if recipe.enabled
+            onItemClick: (id) ->
+              console.log this.getItem id.row
+          # ready: ->
+          #   tree = @
+          #   $.each recipes, (recipe_id, recipe) ->
+          #     tree.checkItem recipe_id if recipe.enabled
         }
       ]
     }
