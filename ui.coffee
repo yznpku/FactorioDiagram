@@ -49,6 +49,7 @@ config_area =
           columns: [ { id: 'name', header: 'Name', template: '{common.treecheckbox()} #name#', fillspace: true } ]
           on:
             onItemCheck: (id, state) ->
+              recipes[id].enabled = false
               console.log id + ', ' + state
             onItemClick: (id) ->
               console.log this.getItem id.row
@@ -83,7 +84,7 @@ config_area =
           margin: 0
           rows: [
               type: 'header'
-              template: 'Factorio Diagram'
+              template: 'Result'
             ,
               result_treetable
           ]
