@@ -46,10 +46,11 @@ config_area =
           id: 'recipe_config'
           view: 'treetable'
           css: 'config'
-          columns: [ { id: 'name', header: 'Name', template: '{common.treecheckbox()} #name#', fillspace: true } ]
+          columns: [ { id: 'name', header: 'Name', template: '{common.treecheckbox()} #name#', fillspace: true, sort: 'string' } ]
           on:
             onItemCheck: (id, state) ->
-              recipes[id].enabled = false
+              recipes[id].enabled = state
+              main.refresh_result()
               console.log id + ', ' + state
             onItemClick: (id) ->
               console.log this.getItem id.row
