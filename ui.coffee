@@ -46,7 +46,7 @@ config_area =
           id: 'recipe_config'
           view: 'treetable'
           css: 'config'
-          columns: [ { id: 'name', header: 'Name', template: '{common.treecheckbox()} #name#', fillspace: true, sort: 'string' } ]
+          columns: [ { id: 'name', header: ['Name', {content: 'textFilter'}], template: '{common.treecheckbox()} #name#', fillspace: true, sort: 'string' } ]
           on:
             onItemCheck: (id, state) ->
               recipes[id].enabled = state
