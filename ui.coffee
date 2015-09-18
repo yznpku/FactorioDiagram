@@ -46,7 +46,13 @@ config_area =
           id: 'recipe_config'
           view: 'treetable'
           css: 'config'
-          columns: [ { id: 'name', header: ['Name', {content: 'textFilter'}], template: '{common.treecheckbox()} #name#', fillspace: true, sort: 'string' } ]
+          columns: [ 
+              id: 'name'
+              header: ['Name', {content: 'textFilter'}]
+              template: '{common.treecheckbox()} #name#'
+              fillspace: true
+              sort: 'string'
+          ]
           on:
             onItemCheck: (id, state) ->
               recipes[id].enabled = state
@@ -54,10 +60,6 @@ config_area =
               console.log id + ', ' + state
             onItemClick: (id) ->
               console.log this.getItem id.row
-          # ready: ->
-          #   tree = @
-          #   $.each recipes, (recipe_id, recipe) ->
-          #     tree.checkItem recipe_id if recipe.enabled
       ]
     ,
       view: 'tabbar'

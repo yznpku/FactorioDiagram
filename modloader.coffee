@@ -15,9 +15,12 @@ reload_crafting_stations = ->
   @crafting_stations = {}
   $.each mods, (index, mod) ->
     $.each mod.crafting_stations, (crafting_station_id, crafting_station) ->
-      $.each crafting_station.types, (index, crafting_station_type) ->
+      $.each crafting_station.types, (crafting_station_type_id, crafting_station_type) ->
         if !crafting_station_type.burner_power?
           crafting_station_type.burner_power = 0
+      $.each crafting_station.priority, (index, crafting_station_priority_type_id) ->
+        if !crafting_station.types[crafting_station_priority_type_id]?
+          console.log crafting_station_id + ' priority list has unknown type ' + crafting_station_priority_type_id
       crafting_stations[crafting_station_id] = crafting_station
 
 reload_recipes = ->

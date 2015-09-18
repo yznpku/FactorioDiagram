@@ -6,7 +6,7 @@
     result_tree.clearAll()
     result_tree.parse ui.build_result_data recipe_count
     result_tree.sort '#name#';
-    result_tree.markSorting 'name', 'asc';
+    result_tree.markSorting 'name', 'asc'
   refresh_recipes: ->
     recipe_config = $$ 'recipe_config'
     recipe_config.clearAll()

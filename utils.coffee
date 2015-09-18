@@ -9,13 +9,11 @@
       $.each container, (key, value) ->
         result[key] = value if f key, value
     result
-
   join_array: (a1, a2) ->
     result = $.merge [], a1
     $.each a2, (index, element) ->
       result.push element if -1 == $.inArray element, result
     result
-
   make_zero_array: (dimensions) ->
     if dimensions.length == 0
       0
@@ -27,7 +25,6 @@
         a.push utils.make_zero_array clone
         dimension--
       a
-
   output_default_translation: ->
     ids = {}
     $.each items, (item_id, item) -> ids[item_id] = item_id
@@ -41,3 +38,5 @@
           str += ' '
         str += word
       console.log '\'' + id + '\': \'' + str + '\''
+  object_size: (object) ->
+    ($.map object, (x) -> x).length

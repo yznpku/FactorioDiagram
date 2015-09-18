@@ -175,21 +175,52 @@ mod =
 
   crafting_stations:
     'assembling_machine':
-      types: [
-        { name: 'Assembling Machine 1', speed: 0.5, max_ingredients: 2 }
-        { name: 'Assembling Machine 2', speed: 0.75 }
-        { name: 'Assembling Machine 3', speed: 1.25 }
+      types:
+        'assembling_machine_1': 
+          speed: 0.5
+          max_ingredients: 2
+        'assembling_machine_2':
+          speed: 0.75
+        'assembling_machine_3':
+          speed: 1.25
+      priority: [
+        'assembling_machine_1'
+        'assembling_machine_2'
+        'assembling_machine_3'
       ]
+      able_to_process_recipe: (crafting_station_type, recipe) ->
+        recipe_input_count = utils.object_size recipe.input
+        return false if crafting_station_type.max_ingredients? and recipe_input_count > crafting_station_type.max_ingredients
+        return true
     'furnace':
-      types: [
-        { name: 'Stone Furnace', speed: 1, burner_power: 0.18 }
-        { name: 'Steel Furnace', speed: 2, burner_power: 0.18 }
-        { name: 'Electric Furnace', speed: 2 }
+      types:
+        'stone_furnace':
+          speed: 1
+          burner_power: 0.18
+        'steel_furnace':
+          speed: 2
+          burner_power: 0.18
+        'electric_furnace':
+            speed: 2
+      priority: [
+        'stone_furnace'
+        'steel_furnace'
+        'electric_furnace'
       ]
     'oil_refinery':
-      types: [{ name: 'Oil Refinery', speed: 1 }]
+      types:
+        'oil_refinery':
+          speed: 1
+      priority: [
+        'oil_refinery'
+      ]
     'chemical_plant':
-      types: [{ name: 'Chemical Plant', speed: 1.25 }]
+      types:
+        'chemical_plant':
+          speed: 1.25
+      priority: [
+        'chemical_plant'
+      ]
   recipes:
     'wooden_chest':
       input:

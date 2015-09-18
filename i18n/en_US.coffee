@@ -171,5 +171,7 @@ translation =
     'solid_fuel_from_heavy_oil': 'Solid fuel from heavy oil'
     'fill_crude_oil_barrel': 'Fill crude oil barrel'
     'empty_crude_oil_barrel': 'Empty crude oil barrel'
+    'assembling_machine': 'Assembling machine'
+    'furnace': 'Furnace'
 
 translations[translation.code] = translation
