@@ -21,6 +21,8 @@ reload_crafting_stations = ->
       $.each crafting_station.priority, (index, crafting_station_priority_type_id) ->
         if !crafting_station.types[crafting_station_priority_type_id]?
           console.log crafting_station_id + ' priority list has unknown type ' + crafting_station_priority_type_id
+      if !crafting_station.able_to_process_recipe?
+        crafting_station.able_to_process_recipe = (crafting_station_type, recipe) -> true
       crafting_stations[crafting_station_id] = crafting_station
 
 reload_recipes = ->
@@ -36,6 +38,14 @@ reload_recipes = ->
         recipe.default_enabled = true
       recipe.enabled = recipe.default_enabled
       recipes[recipe_id] = recipe
+
+assign_default_crafting_station = ->
+  $.each recipes, (index, recipe) ->
+    crafting_station_type = utils.first crafting_stations[recipe.crafting_station].priority, (crafting_station_type) ->
+      true if crafting_stations[recipe.crafting_station].able_to_process_recipe crafting_station_type, recipe
+    if !crafting_station_type?
+      console.log recipe + ' has no valid crafting station type'
+    recipe.crafting_station_type = crafting_station_type
 
 check_integrity_of_recipes = ->
   $.each recipes, (recipe_id, recipe) ->
@@ -53,4 +63,5 @@ check_integrity_of_recipes = ->
     reload_items()
     reload_crafting_stations()
     reload_recipes()
+    assign_default_crafting_station()
     check_integrity_of_recipes()

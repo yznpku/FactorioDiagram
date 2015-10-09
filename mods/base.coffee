@@ -188,9 +188,9 @@ mod =
         'assembling_machine_2'
         'assembling_machine_3'
       ]
-      able_to_process_recipe: (crafting_station_type, recipe) ->
+      able_to_process_recipe: (crafting_station_type_id, recipe) ->
         recipe_input_count = utils.object_size recipe.input
-        return false if crafting_station_type.max_ingredients? and recipe_input_count > crafting_station_type.max_ingredients
+        return false if this.types[crafting_station_type_id].max_ingredients? and recipe_input_count > this.types[crafting_station_type_id].max_ingredients
         return true
     'furnace':
       types:
@@ -201,7 +201,7 @@ mod =
           speed: 2
           burner_power: 0.18
         'electric_furnace':
-            speed: 2
+          speed: 2
       priority: [
         'stone_furnace'
         'steel_furnace'

@@ -9,6 +9,11 @@
       $.each container, (key, value) ->
         result[key] = value if f key, value
     result
+  first: (array, f) ->
+    result = undefined
+    array.some (element, index) ->
+      if f element then (result = element; true) else false
+    result
   join_array: (a1, a2) ->
     result = $.merge [], a1
     $.each a2, (index, element) ->
